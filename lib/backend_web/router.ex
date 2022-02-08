@@ -21,9 +21,11 @@ defmodule BackendWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BackendWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BackendWeb do
+    pipe_through :api
+
+    get "/categories", CategoryController, :index
+  end
 
   # Enables LiveDashboard only for development
   #
@@ -32,6 +34,7 @@ defmodule BackendWeb.Router do
   # If your application does not have an admins-only section yet,
   # you can use Plug.BasicAuth to set up some basic authentication
   # as long as you are also using SSL (which you should anyway).
+  # coveralls-ignore-start
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
@@ -53,4 +56,6 @@ defmodule BackendWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
+
+  # coveralls-ignore-stop
 end
