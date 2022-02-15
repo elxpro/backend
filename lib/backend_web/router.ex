@@ -24,7 +24,9 @@ defmodule BackendWeb.Router do
   scope "/api", BackendWeb do
     pipe_through :api
 
+    post "/categories", CategoryController, :create
     get "/categories", CategoryController, :index
+    get "/categories/:id", CategoryController, :show
   end
 
   # Enables LiveDashboard only for development
