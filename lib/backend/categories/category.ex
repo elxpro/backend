@@ -16,5 +16,7 @@ defmodule Backend.Categories.Category do
     %__MODULE__{}
     |> cast(attrs, @field)
     |> validate_required(@field)
+    |> update_change(:name, &String.upcase/1)
+    |> unique_constraint(:name)
   end
 end

@@ -15,7 +15,7 @@ defmodule BackendWeb.CategoryControllerTest do
 
       conn = get(conn, Routes.category_path(conn, :show, id))
 
-      assert %{"id" => ^id, "name" => "Sport", "description" => "pumpkin"} =
+      assert %{"id" => ^id, "name" => "SPORT", "description" => "pumpkin"} =
                json_response(conn, 200)
     end
   end
